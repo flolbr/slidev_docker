@@ -8,7 +8,7 @@ docker run --name slidev --rm -it \
     -v ${PWD}:/slidev \
     -p 3030:3030 \
     -e NPM_MIRROR="https://registry.npmmirror.com" \
-    tangramor/slidev:latest
+    flolbr/slidev:latest
 ```
 
 ***Note***: You can use `NPM_MIRROR` to specify a npm mirror to speed up the installation process.
@@ -27,7 +27,7 @@ docker run --name slidev --rm -it \
     -v ${PWD}:/slidev \
     -p 3030:3030 \
     -e NPM_MIRROR="https://registry.npmmirror.com" \
-    tangramor/slidev:playwright
+    flolbr/slidev:playwright
 ```
 
 Then you can use the [export feature](https://sli.dev/guide/exporting) of Slidev like following under your work folder:
@@ -42,7 +42,7 @@ docker exec -i slidev npx slidev export --timeout 2m --output slides.pdf
 Or you can create your own slidev project to a docker image with Dockerfile:
 
 ```Dockerfile
-FROM tangramor/slidev:latest
+FROM flolbr/slidev:latest
 
 ADD . /slidev
 
@@ -162,7 +162,7 @@ ADD . /slidev
 
 #### 使用 Github Pages 托管
 
-你可以在静态 Web 站点上托管生成的静态文件，比如 [Github pages](https://tangramor.github.io/slidev_docker/) 或 Gitlab pages。
+你可以在静态 Web 站点上托管生成的静态文件，比如 [Github pages](https://flolbr.github.io/slidev_docker/) 或 Gitlab pages。
 
 由于 Github pages 的 URL 可能包含二级目录，所以你需要修改生成的 `index.html`，把 `href="/assets/xxx` 改为 `href="./assets/xxx` （即使用相对路径）。或者你可以用 vite 的 `--base=/<subfolder>/` 选项来指定二级目录，例如： `docker exec -i slidev npx slidev build --base=/slidev_docker/`。
 

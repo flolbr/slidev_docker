@@ -1,10 +1,11 @@
 #!/bin/sh
 
-if [ "$NPM_MIRROR" != "" ]; then
-    npm config set registry $NPM_MIRROR
+if [ "$BUN_MIRROR" != "" ]; then
+    bun config set registry $BUN_MIRROR
 fi
 
-npm install @slidev/cli @slidev/theme-default @slidev/theme-seriph
+echo "Installing slidev and themes..."
+bun add @slidev/cli @slidev/theme-seriph @slidev/theme-default
 
 if [ -f /slidev/slides.md ]; then
     echo "Start slidev..."
@@ -16,8 +17,9 @@ else
 
 fi
 
-if [ "$NPM_MIRROR" != "" ]; then
-    npm config delete registry
+if [ "$BUN_MIRROR" != "" ]; then
+    bun config delete registry
 fi
 
-npx slidev --remote
+bunx slidev --remote
+

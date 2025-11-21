@@ -1,6 +1,5 @@
 #!/bin/bash
 
-docker build --build-arg NPM_MIRROR="https://registry.npmmirror.com" \
-    --build-arg DEB_MIRROR="mirrors.tuna.tsinghua.edu.cn" \
+docker build \
     -f Dockerfile.playwright \
-    -t tangramor/slidev:playwright .
+    -t flolbr/slidev:playwright .
